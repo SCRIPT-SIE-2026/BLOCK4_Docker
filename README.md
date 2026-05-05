@@ -23,7 +23,7 @@ You can find all the prerequisites needed to follow this training [here](https:/
 - Round-table introduction
 - Phase 1: [Create my first container with Docker](01_Create_My_First_Container_with_Docker.md)
 - Phase 2: [Volumes and persistence](02_Volumes_and_persistence.md)
-- Phase 3: Docker Compose
+- Phase 3: [Docker Compose](03_Docker_Compose.md)
 - Phase 4: Devcontainer
 
 ### Challenge 
@@ -40,6 +40,7 @@ You can pull this repository to work on it throughout this session.
 ### Ressources
 
 - A sheet listing the main Docker commands used is available [here](Docker_commands_cheatsheet.md).
+- A sheet listing the main Docker Compose commands used is available [here](Docker_Compose_commands_cheatsheet.md).
 
 
 ## Why Use Docker?
@@ -64,4 +65,3 @@ Once this image has been built, it can be used to launch one or more identical c
 This mechanism guarantees that a project works the same way on several machines, provided that Docker is installed on them.
 The resulting image can also be distributed and used by other users to build their own containers.
 Platforms that host Docker images are called `registries`: *DockerHub*, *GitHub Container Registry*, *Gitlab Container Registry*, etc.
-
