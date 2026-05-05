@@ -51,6 +51,7 @@ services:
       - <host_folder>:<container_folder>
     command: <command>
 ```
+You can also pass directly the docker
 
 To launch this service, run:
 
