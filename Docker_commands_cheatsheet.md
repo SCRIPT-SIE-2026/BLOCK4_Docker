@@ -2,12 +2,16 @@
 
 This sheet gathers the most useful Docker commands for the course.
 
+For Docker Compose commands used in Phase 3, see [Docker Compose commands cheatsheet](Docker_Compose_commands_cheatsheet.md).
+
 Notation used:
 
 - `<image>`: name of a Docker image, for example `python:3.11`.
 - `<container>`: identifier or name of a container.
 - `<volume>`: name of a Docker volume.
 - `<network>`: name of a Docker network.
+- `<host_path>`: path on your machine.
+- `<container_path>`: path inside the container.
 
 ## Table of Contents
 
@@ -20,6 +24,7 @@ Notation used:
 - [Manage a Container's State](#manage-a-containers-state)
 - [Remove Containers](#remove-containers)
 - [Volumes](#volumes)
+- [Copy Files](#copy-files)
 - [Networks](#networks)
 - [Cleanup and Disk Space](#cleanup-and-disk-space)
 
@@ -75,10 +80,11 @@ Example for the course project:
 
 ```bash
 cd SCRIPT_SIE_2026_05_12_Project
-docker build -t sie-python:latest .
+docker build -t sci-project:latest .
 ```
 
 The `.` tells Docker to use the current directory as the build context.
+It means that Docker can access the files in the current directory when building the image.
 
 ## Launch a Container
 
@@ -133,13 +139,24 @@ docker run --rm -it python:3.11 bash
 Launch the image built in the course project:
 
 ```bash
-docker run --rm sie-python:latest
+docker run --rm sci-project:latest
 ```
 
 Mount the current directory inside the container:
 
 ```bash
 docker run --rm -it -v "$PWD:/app" -w /app python:3.11 bash
+```
+
+Run the course project while mounting the current directory:
+
+```bash
+docker run --rm -it \
+  --name sci-project \
+  -v "$PWD:/app" \
+  -w /app \
+  sci-project:latest \
+  sh -c "mkdir -p results && python src/compute.py"
 ```
 
 Important options:
@@ -151,6 +168,7 @@ Important options:
 - `--rm`: removes the container when it stops.
 - `-v`: mounts a volume or local directory.
 - `-w`: sets the working directory inside the container.
+- `-e`: defines an environment variable.
 
 ## List Containers
 
@@ -275,13 +293,15 @@ Equivalent command:
 docker container rm <container>
 ```
 
-Remove all stopped containers:
+Remove all stopped containers with Docker's cleanup command:
 
 ```bash
-docker rm $(docker ps -a -q)
+docker container prune
 ```
 
-If containers are still running, you must stop them before removing them:
+Docker asks for confirmation before removing containers.
+
+If a container is still running, stop it before removing it:
 
 ```bash
 docker stop <container>
@@ -291,6 +311,30 @@ docker rm <container>
 ## Volumes
 
 Volumes preserve data independently of a container's lifecycle.
+In this course, we mainly use bind mounts to share files between the host machine and a container.
+
+Mount a host directory inside a container:
+
+```bash
+docker run --rm -it -v <host_path>:<container_path> <image> <command>
+```
+
+Example with the current directory:
+
+```bash
+docker run --rm -it -v "$PWD:/app" -w /app python:3.11 bash
+```
+
+Mount a host directory as read-only:
+
+```bash
+docker run --rm -it -v "$PWD/data:/app/data:ro" python:3.11 bash
+```
+
+The `:ro` suffix means that the container can read the directory but cannot write to it.
+
+Docker also supports named volumes.
+They are managed by Docker and are not directly linked to a specific host folder.
 
 List Docker volumes:
 
@@ -323,6 +367,28 @@ docker volume rm <volume>
 ```
 
 A volume cannot be removed if it is still used by a container.
+
+## Copy Files
+
+Copy a file or directory from a container to the host machine:
+
+```bash
+docker cp <container>:<container_path> <host_path>
+```
+
+Example:
+
+```bash
+docker cp sci-project:/app/results ./results
+```
+
+Copy a file or directory from the host machine to a container:
+
+```bash
+docker cp <host_path> <container>:<container_path>
+```
+
+This is useful for inspection or debugging, but regular workflows should prefer bind mounts or Docker Compose.
 
 ## Networks
 
