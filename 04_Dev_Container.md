@@ -20,11 +20,6 @@ we can run the same code, with the same dependencies, and obtain the same result
 
 **However, in research, we often spend much more time developing, testing, debugging, and modifying the code than simply executing it.**
 
-And this development environment is still often local to the host machine:
-different editor configurations, missing extensions, different tools, different habits, etc.
-
-As a result, a project may be reproducible to execute, while still being difficult to set up and work on collaboratively.
-
 Ideally, we would also like the development environment itself to be:
 - reproducible,
 - shareable,
@@ -58,24 +53,17 @@ The questions now become:
 * **How can we reuse the Docker and Docker Compose configuration we already wrote?**
 
 
-## Devcontainer
+## Dev Containers
 
-A **Dev Container** is a development environment described by a project.
-Instead of asking each collaborator to install Python, LaTeX, system libraries, VS Code extensions, and command-line tools manually, the project defines the environment in a configuration file.
+A Dev Container is a development environment described by the project itself.
 
-With VS Code, this approach is provided by the **Dev Containers** extension.
-You need to install the VS Code extension [here](https://marketplace.visualstudio.com/items?itemName=ms-vscode-remote.remote-containers).
+With the VS Code Dev Containers extension, VS Code can open the repository directly inside a Docker container.
 
-Once the project is opened in a Dev Container:
+In practice:
+- the editor still runs on the host machine,
+- but the terminal, tools, dependencies, and project-specific extensions come from the container.
 
-- the VS Code window remains on your computer,
-- but the terminal runs inside the container,
-- the installed tools come from the container,
-- the Python packages come from the container,
-- and project-specific VS Code extensions can be installed automatically.
-
-This means that the repository can describe not only how to **run** the scientific workflow, but also how to **develop** it.
-
+This allows the repository to describe not only how to run the workflow, but also how to develop it.
 ## The `.devcontainer` Folder
 
 A Dev Container is configured using a folder named `.devcontainer` at the root of the project.
@@ -93,7 +81,7 @@ The `devcontainer.json` file tells VS Code how to create and open the developmen
 This simple example allows you to deploy and open your project inside a container based on image `python:3.11`. 
 Here we you use an online, you can obviously pass a custom image of your own.
 
-You can launch `devcontainer` by typing in VScode:
+You can launch `Dev Container` by typing in VScode:
 
 - Open the Command Palette (F1)
 - Type "Dev Containers: Reopen in Container"
@@ -154,19 +142,17 @@ will be executed directly inside `/app`.
 2. In the VS Code terminal, run:
 
 ```bash
-pwd
-which python
 python src/compute.py
 ```
 
 6. Check that the results are created from inside the container.
 7. Close and reopen the project to verify that the development environment can be recreated.
-8. Try to add some customizations to your Devcontainer such as VSCode extensions, you can find some hints [here](https://code.visualstudio.com/docs/devcontainers/create-dev-container#_create-a-devcontainerjson-file).
-9. Configure your Devcontainer to use your existing `compose.yml` and access to `compute` service.
+8. Try to add some customizations to your Dev Container such as VSCode extensions, you can find some hints [here](https://code.visualstudio.com/docs/devcontainers/create-dev-container#_create-a-devcontainerjson-file).
+9. Configure your Dev Container to use your existing `compose.yml` and access to `compute` service.
 See [Using an Existing Dockerfile or compose.yml](#using-an-existing-dockerfile-or-compose-yml) to help you.
 10. Add a `postCreateCommand` in order to install [pre-commit](https://pre-commit.com/)
 11. Add a `postStartCommand` in order to run the generation of your python figure.
-12. Configure your Devcontainer to connect to `report` service of your `compose.yml` 
+12. Configure your Dev Container to connect to `report` service of your `compose.yml` 
 
 
 ## Conclusion
