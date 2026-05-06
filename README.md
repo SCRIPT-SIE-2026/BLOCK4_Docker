@@ -45,8 +45,12 @@ Our objective will be to build a reproducible scientific pipeline:
 
 The work repository is available [here](https://github.com/SCRIPT-SIE-2026/BLOCK4_Docker_Project.git).
 You can pull this repository to work on it throughout this session.
+Some answers are available in the repository’s branches. Naturally, we’re counting on you to play along and try to find them yourself or with the other learners first.
 
-### Ressources and Extras
+Our final objective will be to obtain a fully reproducible scientific development environment:
+same tools, same dependencies, same editor configuration, and same workflow on every machine.
+
+## Resources and Extras
 
 - A sheet listing the main Docker commands used is available [here](Docker_commands_cheatsheet.md).
 - A sheet listing the main Docker Compose commands used is available [here](Docker_Compose_commands_cheatsheet.md).
