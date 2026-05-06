@@ -32,7 +32,8 @@ You can find all the prerequisites needed to follow this training [here](https:/
 - Phase 1: [Create my first container with Docker](01_Create_My_First_Container_with_Docker.md)
 - Phase 2: [Volumes and persistence](02_Volumes_and_persistence.md)
 - Phase 3: [Docker Compose](03_Docker_Compose.md)
-- Phase 4: Devcontainer
+- Phase 4: [Devcontainer](04_Devcontainer.md)
+
 
 ### Challenge 
 Our objective will be to build a reproducible scientific pipeline:
@@ -45,10 +46,11 @@ Our objective will be to build a reproducible scientific pipeline:
 The work repository is available [here](https://github.com/SCRIPT-SIE-2026/BLOCK4_Docker_Project.git).
 You can pull this repository to work on it throughout this session.
 
-### Ressources
+### Ressources and Extras
 
 - A sheet listing the main Docker commands used is available [here](Docker_commands_cheatsheet.md).
 - A sheet listing the main Docker Compose commands used is available [here](Docker_Compose_commands_cheatsheet.md).
+- A short note about using `make` to simplify Docker workflows is available [here](Make_et_Docker.md).
 
 
 ## Why Use Docker?
