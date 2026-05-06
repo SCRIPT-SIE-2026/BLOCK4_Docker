@@ -44,45 +44,37 @@ can be written as the following `compose.yml` file:
 
 ```yaml
 services:
-  compute: # service name
+  compute: # service name mandatory
     image: <image_name>:<image_tag>
     container_name: <container_name> # optional
     volumes:
       - <host_folder>:<container_folder>
     command: <command>
 ```
-You can also pass directly the docker
 
-To launch this service, run:
+You can also pass directly your `Dockerfile` to launch a container with Docker compose, avoiding you to build and named your image with `docker build` process:
 
-```bash
-docker compose up
+```yaml
+services:
+  compute:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: <container_name> # optional
+    volumes:
+      - <host_folder>:<container_folder>
+    command: <command>
 ```
 
-If the service uses a `Dockerfile`, rebuild the image before launching it with:
-
-```bash
-docker compose up --build
-```
-
-To stop running services:
-
-```bash
-docker compose stop
-```
-
-To stop and remove the containers created by Docker Compose:
-
-```bash
-docker compose down
-```
+Now you can use `docker compose` commands such as `docker compose up`, `docker compose stop` or `docker compose down` to control your container, see [Docker compose commands cheatsheet](Docker_Compose_commands_cheatsheet.md) for more details. 
 
 **Note**: `docker compose stop` only stops containers.
-`docker compose down` removes the containers, but it does not remove your project files or bind-mounted results.
+`docker compose down` removes the containers, but it does not remove your project files or bind-mounted results.andom
+
 
 ### Exercise
 
-Try to run the computation container from the project repository using `docker compose`.
+Try to run the computation container from the project repository using `docker compose` tool.
 
 ## Running Several Containers
 
@@ -155,6 +147,7 @@ A list of useful Docker Compose commands is available [here](Docker_Compose_comm
 4. Add the `report` service.
 5. Run the full pipeline with `docker compose up --build`.
 6. Check that the PDF report is created in the `results/` directory.
+7. Try to multiple figures and to enhance your latex report.
 
 ## Conclusion
 
