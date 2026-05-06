@@ -2,6 +2,14 @@
 
 ## Prerequisites
 
+### Hardware ressources
+
+Using Docker can be resource-intensive, in terms of both disk space and RAM. Please ensure you have at least:
+- 64-bit processor
+- 8 GB of RAM
+- 20 GB of free disk space
+- Enable hardware virtualization in BIOS/UEFI. For more information, see [Virtualization](https://docs.docker.com/desktop/troubleshoot-and-support/troubleshoot/topics/#docker-desktop-fails-due-to-virtualization-not-working)
+
 ### Software to install
 
 We do not provide computers. You must bring a working computer on which you can install software. This training requires several software tools to be installed on your machine, listed below.
