@@ -1,5 +1,11 @@
 # 04. Dev Containers: Developing Inside a Reproducible Environment
 
+## Official documentation
+
+- [Dev Containers](https://code.visualstudio.com/docs/devcontainers/containers), official documentation for the VSCode Dev Containers extension.
+- [Advanced Dev Containers](https://code.visualstudio.com/remote/advancedcontainers/overview), cover advanced container configuration when working with the VSCode Dev Containers extension.
+- [Dev Container metadata reference](https://containers.dev/implementors/json_reference/), list of all possible metadata fields and their types and examples.
+
 ## Why Dev Containers?
 
 So far, we have used **Docker** to:
@@ -127,7 +133,7 @@ If the project already contains a `Dockerfile`, the Dev Container can reuse it d
 }
 ```
 
-
+</details>
 
 After opening the project in the Dev Container, a VS Code terminal should start directly inside `/app`.
 Commands such as:
@@ -135,63 +141,7 @@ Commands such as:
 ```bash
 python src/compute.py
 ```
-
-will then use the Python installation and dependencies from the container, not from the host machine.
-
-## Using Docker Compose with a Dev Container
-
-In the previous section, we used Docker Compose to describe a workflow with several services.
-A Dev Container can also reuse a `compose.yml` file.
-
-This is useful when the development environment should be connected to the same services as the execution workflow.
-
-For example, suppose the project contains this `compose.yml`:
-
-```yaml
-services:
-  compute:
-    build:
-      context: .
-      dockerfile: Dockerfile
-    working_dir: /app
-    volumes:
-      - .:/app
-    command: sleep infinity
-```
-
-For a Dev Container, the command is often changed to `sleep infinity`.
-This keeps the container alive while VS Code is attached to it.
-During development, we do not want the container to immediately run the computation and exit.
-We want it to stay open so that we can execute commands interactively.
-
-The corresponding `.devcontainer/devcontainer.json` can be:
-
-```json
-{
-  "name": "reproducible-research-compose",
-  "dockerComposeFile": "../compose.yml",
-  "service": "compute",
-  "workspaceFolder": "/app",
-  "customizations": {
-    "vscode": {
-      "extensions": [
-        "ms-python.python",
-        "ms-toolsai.jupyter"
-      ]
-    }
-  }
-}
-```
-
-Here:
-
-- `dockerComposeFile` points to the Compose file;
-- `service` tells VS Code which service should be used as the development container;
-- `workspaceFolder` tells VS Code where the repository is mounted inside the container.
-
-This approach avoids duplicating configuration:
-the same Docker image and volume configuration can be shared between Docker Compose and the Dev Container.
-</details>
+will be executed directly inside `/app`.
 
 
 
@@ -199,9 +149,9 @@ the same Docker image and volume configuration can be shared between Docker Comp
 
 1. Create a `.devcontainer` folder at the root of the project repository.
 2. Create a `.devcontainer/devcontainer.json` file.
-3. Configure it to reuse either the existing `Dockerfile` or the existing `compose.yml`.
-4. Open the project with `Dev Containers: Reopen in Container`.
-5. In the VS Code terminal, run:
+3. Configure it to reuse either the existing `Docker Image`.
+1. Open the project with `Dev Containers: Reopen in Container`.
+2. In the VS Code terminal, run:
 
 ```bash
 pwd
@@ -211,12 +161,19 @@ python src/compute.py
 
 6. Check that the results are created from inside the container.
 7. Close and reopen the project to verify that the development environment can be recreated.
+8. Try to add some customizations to your Devcontainer such as VSCode extensions, you can find some hints [here](https://code.visualstudio.com/docs/devcontainers/create-dev-container#_create-a-devcontainerjson-file).
+9. Configure your Devcontainer to use your existing `compose.yml` and access to `compute` service.
+See [Using an Existing Dockerfile or compose.yml](#using-an-existing-dockerfile-or-compose-yml) to help you.
+10. Add a `postCreateCommand` in order to install [pre-commit](https://pre-commit.com/)
+11. Add a `postStartCommand` in order to run the generation of your python figure.
+12. Configure your Devcontainer to connect to `report` service of your `compose.yml` 
+
 
 ## Conclusion
 
 A Dev Container makes the development environment part of the project.
 
-Docker allows us to execute a workflow reproducibly.
+Docker allows us to execute a workflow reproducible.
 Docker Compose allows us to coordinate several containers.
 Dev Containers allow us to develop inside the same kind of reproducible environment.
 
