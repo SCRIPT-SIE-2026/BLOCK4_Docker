@@ -55,4 +55,4 @@ docker build -t <my_image>:<my_image_tag> .
 
 
 Now you can use `docker run`command to launch your custom container.
-Let's write a working Dockerfile to our [project](https://github.com/SCRIPT-SIE-2026/SCRIPT_SIE_2026_05_12_Project.git)!
+Let's write a working Dockerfile to our [project](https://github.com/SCRIPT-SIE-2026/BLOCK4_Docker_Project.git)!

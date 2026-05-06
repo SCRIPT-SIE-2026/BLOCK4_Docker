@@ -42,7 +42,7 @@ Our objective will be to build a reproducible scientific pipeline:
 - LaTeX compilation
 - Shared environment
 
-The work repository is available [here](https://github.com/SCRIPT-SIE-2026/SCRIPT_SIE_2026_05_12_Project.git).
+The work repository is available [here](https://github.com/SCRIPT-SIE-2026/BLOCK4_Docker_Project.git).
 You can pull this repository to work on it throughout this session.
 
 ### Ressources
