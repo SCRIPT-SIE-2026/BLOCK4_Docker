@@ -1,4 +1,4 @@
-# 05. Make and Docker
+# Make and Docker
 
 ## Why use `make` with Docker?
 
