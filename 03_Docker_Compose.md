@@ -69,7 +69,7 @@ services:
 Now you can use `docker compose` commands such as `docker compose up`, `docker compose stop` or `docker compose down` to control your container, see [Docker compose commands cheatsheet](Docker_Compose_commands_cheatsheet.md) for more details. 
 
 **Note**: `docker compose stop` only stops containers.
-`docker compose down` removes the containers, but it does not remove your project files or bind-mounted results.andom
+`docker compose down` removes the containers, but it does not remove your project files or bind-mounted results.
 
 
 ### Exercise

@@ -48,7 +48,6 @@ We won’t use them in this course, but you will encounter them in Docker Compos
 
 **Note (Linux users)**: You may encounter permission issues depending on the user inside the container. This is due to UID/GID differences between host and container.
 
-
 ## Conclusion 
 
 Containers are ephemeral by design.
