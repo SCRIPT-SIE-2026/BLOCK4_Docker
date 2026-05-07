@@ -1,5 +1,10 @@
 # 01. Create My First Container with Docker
 
+## Official documentation
+
+- [Docker](https://code.visualstudio.com/docs/devcontainers/containers), official documentation of Docker container.
+- [Containerization](https://www.redhat.com/en/topics/cloud-native-apps/what-is-containerization), explanation about containerization from Redhat.
+
 ## How to run a Docker container ? 
 
 You can launch a container directly from an image available online:
@@ -54,5 +59,6 @@ docker build -t <my_image>:<my_image_tag> .
 ```
 
 
-Now you can use `docker run`command to launch your custom container.
-Let's write a working Dockerfile to our [project](https://github.com/SCRIPT-SIE-2026/BLOCK4_Docker_Project.git)!
+Now you can use `docker run` command to launch your custom container.
+
+Let’s see how to run our [project](https://github.com/SCRIPT-SIE-2026/BLOCK4_Docker_Project.git) in a Docker container!
