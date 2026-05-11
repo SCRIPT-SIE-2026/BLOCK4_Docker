@@ -18,6 +18,7 @@ Notation used:
 - [Docker Images](#docker-images)
 - [Build an Image from a Dockerfile](#build-an-image-from-a-dockerfile)
 - [Launch a Container](#launch-a-container)
+- [Stop a container](#stop-a-container)
 - [List Containers](#list-containers)
 - [Interact with a Container](#interact-with-a-container)
 - [View Logs and Detailed Information](#view-logs-and-detailed-information)
@@ -169,6 +170,31 @@ Important options:
 - `-v`: mounts a volume or local directory.
 - `-w`: sets the working directory inside the container.
 - `-e`: defines an environment variable.
+
+## Stop a container
+
+Stop a container: 
+
+```bash
+docker stop <container_name or container_ID>
+```
+
+Remove a container (container need to be stopped first): 
+
+```bash
+docker rm <container_name or container_ID>
+```
+
+Stop all alive containers:
+
+```bash
+docker stop $(docker ps -q)
+```
+
+Remove all stoped containers:
+```bash
+docker stop $(docker ps -aq)
+```
 
 ## List Containers
 

@@ -66,7 +66,7 @@ services:
     command: <command>
 ```
 
-Now you can use `docker compose` commands such as `docker compose up`, `docker compose stop` or `docker compose down` to control your container, see [Docker compose commands cheatsheet](Docker_Compose_commands_cheatsheet.md) for more details. 
+Now you can use `docker compose` commands such as `docker compose up`, `docker compose stop` or `docker compose down` to control your container, see [Docker compose commands cheatsheet](cheatsheets/Docker_Compose_commands_cheatsheet.md) for more details. 
 
 **Note**: `docker compose stop` only stops containers.
 `docker compose down` removes the containers, but it does not remove your project files or bind-mounted results.
@@ -136,7 +136,7 @@ This means that the `report` service starts only if the `compute` service finish
 If the Python computation fails, the LaTeX compilation should not start.
 
 ## Useful Docker Compose Commands
-A list of useful Docker Compose commands is available [here](Docker_Compose_commands_cheatsheet.md).
+A list of useful Docker Compose commands is available [here](cheatsheets/Docker_Compose_commands_cheatsheet.md).
 
 
 ## Exercise

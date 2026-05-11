@@ -52,9 +52,9 @@ same tools, same dependencies, same editor configuration, and same workflow on e
 
 ## Resources and Extras
 
-- A sheet listing the main Docker commands used is available [here](Docker_commands_cheatsheet.md).
-- A sheet listing the main Docker Compose commands used is available [here](Docker_Compose_commands_cheatsheet.md).
-- A short note about using `make` to simplify Docker workflows is available [here](Make_et_Docker.md).
+- A sheet listing the main Docker commands used is available [here](cheatsheets/Docker_commands_cheatsheet.md).
+- A sheet listing the main Docker Compose commands used is available [here](cheatsheets/Docker_Compose_commands_cheatsheet.md).
+- A short note about using `make` to simplify Docker workflows is available [here](utils/Make_and_Docker.md).
 
 
 ## Why Use Docker?

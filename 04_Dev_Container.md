@@ -151,7 +151,7 @@ python src/compute.py
 9. Add a `postCreateCommand` in order to install [pre-commit](https://pre-commit.com/)
 10. Add a `postStartCommand` in order to run the generation of your python figure.
 11. Configure your Dev Container to use your existing `compose.yml` and access to `compute` service.
-See [Using an Existing Dockerfile or compose.yml](#using-an-existing-dockerfile-or-compose-yml) to help you.
+See [Using an Existing Dockerfile or compose.yml](#using-an-existing-dockerfile-or-composeyml) to help you.
 12. Configure your Dev Container to connect to `report` service of your `compose.yml` 
 
 
